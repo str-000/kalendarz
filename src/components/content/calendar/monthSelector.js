@@ -1,7 +1,8 @@
-import React from 'react';
-import '../../../index.css';
+import React from 'react'
+import '../../../index.css'
 
-import Grid from './grid';
+import Grid from './grid'
+import GridWeek from './grid-week'
 
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
@@ -14,15 +15,9 @@ export default class MonthSelector extends React.Component {
         this.state = {selectedMonth: 1}
     }
 
-    selectNextMonth=()=>{
-        this.state.selectedMonth < 12 && this.setState({selectedMonth: this.state.selectedMonth+1})
-        console.log(this.state.selectedMonth)
-    }
+    selectNextMonth=()=>{this.state.selectedMonth < 12 && this.setState({selectedMonth: this.state.selectedMonth+1})}
 
-    selectPrevMonth=()=>{
-        this.state.selectedMonth > 1 && this.setState({selectedMonth: this.state.selectedMonth-1})
-        console.log(this.state.selectedMonth)
-    }
+    selectPrevMonth=()=>{this.state.selectedMonth > 1 && this.setState({selectedMonth: this.state.selectedMonth-1})}
 
     render() {
         return(
@@ -52,7 +47,9 @@ export default class MonthSelector extends React.Component {
                     </div>
                 </div>
 
-                <Grid selectedMonth={this.state.selectedMonth}/>
+                {this.props.selectedView === 1 && <Grid selectedMonth={this.state.selectedMonth}/>}
+                {this.props.selectedView === 2 && <GridWeek selectedMonth={this.state.selectedMonth}/>}
+                {this.props.selectedView === 3 && <Grid selectedMonth={this.state.selectedMonth}/>}
             </div>
         );
     }

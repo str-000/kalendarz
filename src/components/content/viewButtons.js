@@ -9,9 +9,14 @@ export default class ViewButtons extends React.Component {
     render() {
         return(
             <div className='view-buttons'>
-                <button className='month-view-button'><CalendarViewMonthIcon sx={{ fontSize: 40, color: 'rgba(0,0,0,0.7)'}}/></button>
-                <button className='week-view-button'><CalendarViewWeekIcon sx={{ fontSize: 40, color: 'rgba(0,0,0,0.3)'}}/></button>
-                <button className='day-view-button'><TodayIcon sx={{ fontSize: 40, color: 'rgba(0,0,0,0.3)'}}/></button>
+                {this.props.selectedView === 1 ? (<button onClick={()=>this.props.toggleMe(1)} className='month-view-button'><CalendarViewMonthIcon sx={{ fontSize: 40, color: 'rgba(0,0,0,0.7)'}}/></button>) : 
+                    (<button onClick={()=>this.props.toggleMe(1)} className='month-view-button'><CalendarViewMonthIcon sx={{ fontSize: 40, color: 'rgba(0,0,0,0.3)'}}/></button>)}
+
+                {this.props.selectedView === 2 ? (<button onClick={()=>this.props.toggleMe(2)} className='week-view-button'><CalendarViewWeekIcon sx={{ fontSize: 40, color: 'rgba(0,0,0,0.7)'}}/></button>) : 
+                    (<button onClick={()=>this.props.toggleMe(2)} className='week-view-button'><CalendarViewWeekIcon sx={{ fontSize: 40, color: 'rgba(0,0,0,0.3)'}}/></button>)}
+                    
+                {this.props.selectedView === 3 ? (<button onClick={()=>this.props.toggleMe(3)} className='day-view-button'><TodayIcon sx={{ fontSize: 40, color: 'rgba(0,0,0,0.7)'}}/></button>) : 
+                    (<button onClick={()=>this.props.toggleMe(3)} className='day-view-button'><TodayIcon sx={{ fontSize: 40, color: 'rgba(0,0,0,0.3)'}}/></button>)}
             </div>
         );
     }

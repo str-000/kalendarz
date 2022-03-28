@@ -33,14 +33,21 @@ function setMonthToUse(selectedMonth) {
     }
 }
 
-export default class Grid extends React.Component {
+export default class GridWeek extends React.Component {
     render() {
         return(
-            <div className='grid'>
+            <div className='grid-week'>
                 {setMonthToUse(this.props.selectedMonth).map((day,index)=>{return day === 0 ? 
-                    <div key={index} className='grid-element-null'></div> : 
+                    <div key={index} style={{display: "none"}} className='grid-element-null'></div> : 
                         ((index+1)%7 === 0 ? 
-                            <div id={index} className='grid-element' key={index}><b>{day}</b></div> : <div id={index} className='grid-element' key={index}>{day}</div>)
+                            <div id={index} className='grid-element-week' key={index}><b>{day}. Niedziela </b></div> : <div id={index} className='grid-element-week' key={index}>
+                                {(index+2)%7 === 0 && <span>{day}. Sobota</span>}
+                                {(index)%7 === 0 && <span>{day}. Poniedziałek</span>}
+                                {(index-1)%7 === 0 && <span>{day}. Wtorek</span>}
+                                {(index-2)%7 === 0 && <span>{day}. Środa</span>}
+                                {(index-3)%7 === 0 && <span>{day}. Czwartek</span>}
+                                {(index-4)%7 === 0 && <span>{day}. Piątek</span>}
+                            </div>)
                         }
                     )
                 }
